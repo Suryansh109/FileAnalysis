@@ -6,3 +6,4 @@ PyPDF2            # For PDF parsing
 openpyxl          # For XLSX parsing
 fitz
 streamlit
+tools

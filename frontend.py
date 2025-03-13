@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 
-st.title("📂 File Upload Service")
+st.title("📂 Analyse my sheet")
 
 # Upload file section
 uploaded_file = st.file_uploader("Choose a CSV, XLSX, or PDF file", type=["csv", "xlsx", "pdf"])
@@ -17,7 +17,7 @@ if uploaded_file:
         
         if response.status_code == 200:
             data = response.json()
-            st.success(f"✅ {data['filename']} uploaded successfully!")
+            st.success(f"✅ {data['filename']} ready for Analysis! PS: We don't save your data!")
             st.write("### 🏷️ Extracted Labels:")
             for label in data['labels']:
                 st.write(f"- **{label['column']}** → Example: `{label['example']}`")

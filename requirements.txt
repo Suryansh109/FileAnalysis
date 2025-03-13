@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+python-multipart  # For handling file uploads
+pandas            # For CSV parsing
+PyPDF2            # For PDF parsing
+openpyxl          # For XLSX parsing

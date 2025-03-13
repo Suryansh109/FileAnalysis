@@ -12,7 +12,7 @@ if uploaded_file:
 
     if file_type in ["csv", "xlsx"]:
         files = {"file": uploaded_file.getvalue()}
-        url = f"http://localhost:8000/upload/{file_type}/"
+        url = f"https://fileanalysis.onrender.com/upload/{file_type}/"
         response = requests.post(url, files=files)
         
         if response.status_code == 200:
@@ -36,7 +36,7 @@ if uploaded_file:
 
             if st.button("Apply Typecasting"):
                 typecast_response = requests.post(
-                    "http://localhost:8000/typecast/",
+                    "https://fileanalysis.onrender.com/typecast/",
                     json=dtype_map
                 )
 
@@ -71,7 +71,7 @@ if uploaded_file:
             operation = st.selectbox("Select aggregation operation", data["aggregation_operations"])
             if st.button("Aggregate"):
                 agg_response = requests.get(
-                    "http://localhost:8000/aggregate/",
+                    "https://fileanalysis.onrender.com/aggregate/",
                     params={"column": column, "operation": operation},
                 )
                 if agg_response.status_code == 200:
@@ -88,7 +88,7 @@ if uploaded_file:
             window_size = st.number_input("Window size", min_value=1, value=3, step=1)
             if st.button("Apply Window Operation"):
                 window_response = requests.get(
-                    "http://localhost:8000/window/",
+                    "https://fileanalysis.onrender.com/window/",
                     params={"column": column, "operation": operation, "window_size": window_size},
                 )
                 if window_response.status_code == 200:
@@ -101,7 +101,7 @@ if uploaded_file:
 
     elif file_type == "pdf":
         files = {"file": uploaded_file.getvalue()}
-        response = requests.post("http://localhost:8000/upload/pdf/", files=files)
+        response = requests.post("https://fileanalysis.onrender.com/upload/pdf/", files=files)
         if response.status_code == 200:
             data = response.json()
             st.success(f"✅ {data['filename']} uploaded successfully!")
